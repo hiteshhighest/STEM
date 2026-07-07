@@ -53,6 +53,16 @@ def team_view(request):
             "role": "Volunteer Manager", 
             "image": "pfp.jpg"
         },
+        {
+            "name": "Omnika B", 
+            "role": "Outreach Director", 
+            "image": "pfp.jpg"
+        },
+        {
+            "name": "Srija A", 
+            "role": "Executive Member", 
+            "image": "pfp.jpg"
+        },
     ]
     return render(request, 'core/team.html', {'members': members})
 
