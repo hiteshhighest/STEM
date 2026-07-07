@@ -1,0 +1,152 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<title>STEMforNepal | Home</title>
+<style>
+    /* Premium Interactive Hero Block Layout */
+    .hero-glass-banner {
+        background: linear-gradient(135deg, #09132e 0%, #030712 100%);
+        border: 1px solid rgba(59, 130, 246, 0.15);
+        position: relative;
+    }
+    
+    .hero-glass-banner::after {
+        content: '';
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-color: var(--accent-blue);
+        filter: blur(120px);
+        top: 10%;
+        right: 10%;
+        opacity: 0.15;
+        pointer-events: none;
+    }
+
+    .badge-premium-pill {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        color: #60a5fa;
+        letter-spacing: 0.05em;
+    }
+
+    .btn-hero-primary {
+        background-color: var(--accent-blue);
+        color: #ffffff;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+    .btn-hero-primary:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        color: #ffffff;
+    }
+
+    .btn-hero-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    .btn-hero-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        color: #ffffff;
+    }
+
+    /* Modern Icon Spot Layout inside Features */
+    .icon-spot-glow {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover .icon-spot-glow {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.3);
+        color: var(--accent-blue);
+    }
+</style>
+
+<!-- Main Interactive Hero Layout -->
+<div class="hero-glass-banner p-5 rounded-4 shadow mb-5 text-center text-md-start">
+    <div class="row py-4 align-items-center">
+        <div class="col-lg-9">
+            <span class="badge badge-premium-pill px-3 py-2 rounded-pill text-uppercase mb-3 shadow-sm fw-bold">Official Website</span>
+            <h1 class="display-4 fw-bold mb-3 text-white" style="letter-spacing: -0.03em; line-height: 1.15;">Developing STEM <br class="d-none d-md-block">in Nepal</h1>
+            <p class="fs-5 mb-4 text-secondary-emphasis" style="max-width: 720px; color: #cbd5e1 !important;">We work together to develop STEM (Science, Technology, Engineering, Mathematics) in Nepal through community serivce, programs and various initiatives.</p>
+            <div class="pt-2">
+                <a href="{% url 'programs' %}" class="btn btn-hero-primary btn-lg px-4 me-md-3 rounded-pill mb-2 mb-md-0">Explore Programs</a>
+                <a href="{% url 'volunteer' %}" class="btn btn-hero-secondary btn-lg px-4 rounded-pill">Volunteer</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Symmetric STEM Pillars Matrix Grid -->
+<div class="row g-4 text-start">
+    
+    <!-- Science -->
+    <div class="col-lg-3 col-md-6">
+        <div class="p-4 card h-100">
+            <div class="icon-spot-glow text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moisture" viewBox="0 0 16 16">
+                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0M3 5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m0 1a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7m11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 9.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0M3 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m0 1a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7"/>
+                </svg>
+            </div>
+            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">S</span>cience</h4>
+            <p class="small mb-0" style="color: #94a3b8;">Transforming theoretical concepts into interactive, hands-on experimentation and curiosity-driven discovery.</p>
+        </div>
+    </div>
+
+    <!-- Technology -->
+    <div class="col-lg-3 col-md-6">
+        <div class="p-4 card h-100">
+            <div class="icon-spot-glow text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+                    <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1a.5.5 0 0 1 .5.5v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1a.5.5 0 0 1-.5.5h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1H2a.5.5 0 0 1-.5-.5v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2V2H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 0h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1zm1 3v9h9V4H5zm1 1h2v2H6V5zm3 0h2v2H9V5zm-3 3h2v2H6V8zm3 0h2v2H9V8z"/>
+                </svg>
+            </div>
+            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">T</span>echnology</h4>
+            <p class="small mb-0" style="color: #94a3b8;">Bridging the digital divide by introducing computing, programming logic, and digital literacy frameworks.</p>
+        </div>
+    </div>
+
+    <!-- Engineering -->
+    <div class="col-lg-3 col-md-6">
+        <div class="p-4 card h-100">
+            <div class="icon-spot-glow text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cone-striped" viewBox="0 0 16 16">
+                    <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.983C9.122 3.965 8.581 4 8 4s-1.122-.035-1.725-.103L6.575 1h2.85zM11.5 10c0 .633-.163 1.224-.462 1.777l-.82-3.281c.713-.129 1.282-.325 1.282-.496zM4 9.5c0 .171.57.367 1.282.496l-.82 3.281A3.2 3.2 0 0 1 4 11.5zm.374 3.497.742 2.971C5.747 15.986 6.845 16 8 16s2.253-.014 2.884-.032l.742-2.971C10.635 11.936 9.399 12 8 12s-2.635-.064-3.626-.003z"/>
+                </svg>
+            </div>
+            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">E</span>ngineering</h4>
+            <p class="small mb-0" style="color: #94a3b8;">Fostering problem-solving mindsets through practical infrastructure builds, robotics, and design models.</p>
+        </div>
+    </div>
+
+    <!-- Mathematics -->
+    <div class="col-lg-3 col-md-6">
+        <div class="p-4 card h-100">
+            <div class="icon-spot-glow text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                    <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m-6 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m-6 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </div>
+            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">M</span>athematics</h4>
+            <p class="small mb-0" style="color: #94a3b8;">Moving beyond rote algorithmic calculation to develop structural abstraction and spatial reasoning.</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

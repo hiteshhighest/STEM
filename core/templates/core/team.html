@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+{% load static %} 
+{% block content %}
+<style>
+    /* Glowing Pill Badge Overrides */
+    .badge-glowing-leadership {
+        background: rgba(59, 130, 246, 0.1); /* Emerald background alpha */
+        border: 1px solid rgba(16, 185, 129, 0.25);
+        color: #60a5fa;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+    }
+
+    .badge-member-role {
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        color: #60a5fa !important;
+        letter-spacing: 0.03em;
+    }
+
+    /* Ambient glow backing wrapper around profile frames */
+    .avatar-glow-ring {
+        position: relative;
+        z-index: 1;
+        transition: all 0.35s ease;
+    }
+    
+    .avatar-glow-ring::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0px rgba(59, 130, 246, 0);
+        transition: all 0.35s ease;
+    }
+
+    .card:hover .avatar-glow-ring::after {
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    }
+    
+    .card:hover .avatar-glow-ring img {
+        transform: scale(1.04);
+    }
+
+    .avatar-image-frame {
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<div class="text-center mb-5 mt-2">
+    <span class="badge badge-glowing-leadership px-3 py-2 rounded-pill text-uppercase mb-3">Leadership</span>
+    <h1 class="fw-bold display-5 text-white" style="letter-spacing: -0.03em;">Executive Members</h1>
+    <p class="mx-auto mt-2" style="max-width: 520px; color: var(--text-muted);">The driving force steering our mission forward on the ground across Nepal.</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+    {% for member in members %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 text-center p-4 shadow-lg">
+            
+            <div class="position-relative d-inline-block mx-auto mb-3.5 avatar-glow-ring">
+                {% if member.image %}
+                    <img src="{% static member.image %}" 
+                         alt="{{ member.name }}" 
+                         class="rounded-circle avatar-image-frame" 
+                         style="width: 115px; height: 115px; object-fit: cover;">
+                {% else %}
+                    <div class="bg-white bg-opacity-5 rounded-circle d-flex align-items-center justify-content-center border border-secondary border-opacity-10" style="width: 115px; height: 115px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="rgba(255, 255, 255, 0.3)" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                        </svg>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="card-body p-0 d-flex flex-column justify-content-center" style="margin-top: 10px;">
+                <h4 class="fw-bold fs-5 mb-2.5 text-white" style="letter-spacing: -0.01em;">{{ member.name }}</h4>
+                <span class="badge badge-member-role text-uppercase px-3 py-2 rounded-pill small fw-bold align-self-center" style="font-size: 0.7rem;">
+                    {{ member.role }}
+                </span>
+            </div>
+
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <p class="text-muted">No board or executive roles declared yet.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<style>
+    /* Styling Django Form Inputs Globally inside the Form Card */
+    .premium-form-box input, 
+    .premium-form-box textarea, 
+    .premium-form-box select {
+        display: block;
+        width: 100%;
+        padding: 0.8rem 1.1rem; /* Expanded internal input padding for optimal breathing room */
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #ffffff;
+        background-color: rgba(3, 7, 18, 0.4);
+        background-clip: padding-box;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Modern Focus State Micro-interactions */
+    .premium-form-box input:focus, 
+    .premium-form-box textarea:focus, 
+    .premium-form-box select:focus {
+        color: #ffffff;
+        background-color: rgba(3, 7, 18, 0.6);
+        border-color: var(--accent-blue, #3b82f6);
+        outline: 0;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    }
+
+    /* Horizontal Decorative Rule Glow */
+    .form-divider-glow {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Ultra-Aesthetic Interactive Submit Button */
+    .btn-form-submit {
+        background-color: #ffffff;
+        color: #030712;
+        font-weight: 700;
+        padding: 0.85rem 1.5rem; /* Enhanced button padding */
+        border: 1px solid #ffffff;
+        border-radius: 12px;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-form-submit:hover {
+        background-color: transparent;
+        color: #ffffff;
+        border-color: var(--accent-blue, #3b82f6);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+        transform: translateY(-1px);
+    }
+</style>
+
+<div class="row justify-content-center py-4 py-md-5">
+    <div class="col-md-8 col-lg-7">
+        <div class="card shadow-lg p-4 p-md-5 premium-form-box">
+            
+            <h2 class="fw-bold mb-2 text-white" style="letter-spacing: -0.02em;">Apply as a Volunteer</h2>
+            <p class="small mb-0" style="color: #94a3b8;">Your expressions are sent directly onto our organization's monitoring inbox.</p>
+            
+            <div class="form-divider-glow my-4"></div>
+            
+            <form method="POST" class="row g-4">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="col-12">
+                        <label class="form-label small fw-semibold text-white-50 mb-2">{{ field.label }}</label>
+                        
+                        {{ field }}
+                        
+                        {% if field.errors %}
+                            <div class="text-danger small mt-2 fw-medium d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-exclamation-circle-fill me-1.5" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                                </svg>
+                                {{ field.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                
+                <div class="col-12 pt-2">
+                    <button type="submit" class="btn btn-form-submit w-100 text-uppercase tracking-wider">
+                        Submit Application
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

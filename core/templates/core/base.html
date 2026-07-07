@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEMforNepal</title>
+    <!-- Inter Font Family for crisp, high-tech aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="{% static 'logo.png' %}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5.3 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #030712;      /* Ultra deep slate black */
+            --bg-surface: #0b1329;   /* Glass card backdrop core */
+            --accent-blue: #3b82f6;  /* Vivid brand electric blue */
+            --accent-glow: #1d4ed8;  /* Soft backing deep blue glow */
+            --text-primary: #f8fafc; /* Crisp silver white */
+            --text-muted: #94a3b8;   /* Subtle grey text */
+            --border-glow: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Ambient subtle decorative background glows */
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 15% 75%, rgba(29, 78, 216, 0.05) 0%, transparent 35%);
+            background-attachment: fixed;
+        }
+
+        /* Sophisticated Translucent Header */
+        .app-header {
+            background-color: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.75px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .brand-title span {
+            color: var(--accent-blue);
+            font-weight: 800;
+        }
+
+        /* Minimalist Navigation Items */
+        .header-nav .nav-link {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 0.5rem 1.15rem !important;
+            border-radius: 20px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header-nav .nav-link:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .header-nav .nav-link.active-link {
+            color: var(--accent-blue);
+            background-color: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            font-weight: 600;
+        }
+
+        /* Premium Pill Header Action Button */
+        .btn-premium-action {
+            background-color: #ffffff;
+            color: #030712;
+            font-weight: 600;
+            font-size: 0.88rem;
+            padding: 0.55rem 1.35rem;
+            border-radius: 30px;
+            border: 1px solid #ffffff;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-premium-action:hover {
+            background-color: transparent;
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Content Context Setup */
+        .main-frame {
+            flex-grow: 1;
+        }
+
+        /* Beautiful Global Dark Glass Cards */
+        .card, .glass-card {
+            background-color: var(--bg-surface) !important;
+            border: 1px solid var(--border-glow) !important;
+            border-radius: 20px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before, .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .card:hover, .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.25) !important;
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.08) !important;
+        }
+
+        /* Smooth Typography Fixes */
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Clean Modern Footer */
+        .app-footer {
+            background-color: rgba(3, 7, 18, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 1.75rem 0;
+            color: #475569;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Symmetric Top Header -->
+    <header class="app-header">
+        <div class="container d-flex align-items-center justify-content-between">
+            
+            <a class="brand-title d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'logo.png' %}" onerror="this.style.display='none'" class="brand-logo me-2.5" alt="Logo">
+                <span>STEM</span>forNepal
+            </a>
+
+            <div class="d-flex align-items-center">
+                <nav class="header-nav nav d-none d-lg-flex me-4 gap-3.5">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active-link{% endif %}" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'programs' %}active-link{% endif %}" href="{% url 'programs' %}">Programs</a>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'team' %}active-link{% endif %}" href="{% url 'team' %}">Executive Members</a>
+                </nav>
+
+                <a class="btn btn-premium-action d-none d-sm-inline-block" href="{% url 'volunteer' %}">Volunteer</a>
+
+                <!-- Mobile Menu Button with Modern Icon styling -->
+                <button class="btn btn-dark d-lg-none border border-secondary border-opacity-10 ms-2 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#mobileHeaderDropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#94a3b8" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 2.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 2.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 10.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 15h-3A1.5 1.5 0 0 1 9 10.5v3z"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Mobile Drawer Link Stack -->
+        <div class="collapse d-lg-none container mt-3" id="mobileHeaderDropdown">
+            <nav class="header-nav nav flex-column bg-dark bg-opacity-80 p-3 rounded-4 border border-secondary border-opacity-10 shadow-lg">
+                <a class="nav-link my-1 {% if request.resolver_match.url_name == 'home' %}active-link{% endif %}" href="{% url 'home' %}">Home</a>
+                <a class="nav-link my-1 {% if request.resolver_match.url_name == 'programs' %}active-link{% endif %}" href="{% url 'programs' %}">Initiatives</a>
+                <a class="nav-link my-1 {% if request.resolver_match.url_name == 'team' %}active-link{% endif %}" href="{% url 'team' %}">Executive Members</a>
+                <a class="btn btn-premium-action w-100 mt-3" href="{% url 'volunteer' %}">Join Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Page Content Area -->
+    <div class="main-frame">
+        <main class="container py-5">
+            {% block content %} {% endblock %}
+        </main>
+    </div>
+
+    <!-- Soft Elegant Footer -->
+    <footer class="app-footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <p class="mb-0 fw-medium">&copy; 2026 STEMforNepal. All rights reserved.</p>
+            <p class="mb-0 d-none d-md-block small">Developing interactive science and tech education networks across Nepal.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Core JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

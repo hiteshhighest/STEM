@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<style>
+    /* Glowing Pill Badge Override */
+    .badge-glowing-track {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        color: #60a5fa;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+    }
+
+    /* Elegant Program Taglines */
+    .program-tagline {
+        color: #60a5fa !important;
+        font-size: 0.82rem;
+        letter-spacing: 0.03em;
+    }
+
+    /* Micro-interaction for Action Text Links */
+    .btn-action-link {
+        color: #ffffff;
+        font-size: 0.88rem;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card:hover .btn-action-link {
+        color: #60a5fa;
+        padding-left: 6px !important;
+    }
+
+    /* Card Inner Top Border Light Effect */
+    .card-divider-glow {
+        border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+    }
+</style>
+
+<!-- Centered Header Section -->
+<div class="text-center mb-5 mt-2">
+    <span class="badge badge-glowing-track px-3 py-2 rounded-pill text-uppercase mb-3">Programs</span>
+    <h1 class="fw-bold display-5 text-white" style="letter-spacing: -0.03em;">Upcoming Programs/Initiatives</h1>
+    <p class="text-secondary mx-auto mt-2" style="max-width: 580px; color: #94a3b8 !important;">Explore our current projects and community-led engineering blueprints scaled for regional schools.</p>
+</div>
+
+<!-- Responsive Glass Grid Matrix -->
+<div class="row g-4">
+    {% for program in programs %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-lg">
+            <div class="card-body p-4 d-flex flex-column">
+                <!-- Program High-contrast Dynamic Tagline -->
+                <span class="program-tagline fw-bold text-uppercase mb-2.5 d-block">{{ program.tagline }}</span>
+                
+                <!-- Title -->
+                <h3 class="h5 card-title fw-bold mb-3 text-white" style="letter-spacing: -0.01em;">{{ program.title }}</h3>
+                
+                <!-- Description Body -->
+                <p class="card-text small flex-grow-1" style="color: #94a3b8; line-height: 1.6;">{{ program.description }}</p>
+                
+                <!-- Interactive Action Footer -->
+                <div class="mt-4 pt-3 card-divider-glow">
+                    <a href="{% url 'volunteer' %}" class="btn-action-link d-inline-flex align-items-center p-0 fw-semibold text-decoration-none">
+                        Support This Program 
+                        <span class="ms-1.5 transition-transform">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <!-- Fallback State block if list returns empty context -->
+    <div class="col-12 text-center py-5">
+        <p class="text-muted fs-5">No upcoming initiatives listed at the moment. Check back soon!</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
