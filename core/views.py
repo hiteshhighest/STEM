@@ -32,12 +32,15 @@ def home(request):
         
     return render(request, 'core/home.html')
 
+from django.shortcuts import render
+
 def programs_view(request):
     programs = [
         {
             "title": "Shikshya Sabailai", 
             "tagline": "Education",
-            "description": "Join our flagship initiative to bring quality STEM education to all. Volunteer, donate, or spread awareness to make a real difference in underserved communities through foundational digital and scientific literacy modules."
+            "description": "Join our flagship initiative to bring quality STEM education to all. Volunteer, donate, or spread awareness to make a real difference in underserved communities through foundational digital and scientific literacy modules.",
+            "image": "/static/shikshya_sabailai.jpg"  # Map your asset file pathway configuration string here
         },
     ]
     return render(request, 'core/programs.html', {'programs': programs})
@@ -60,14 +63,14 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
-            "name": "Ngawang T", 
-            "role": "Communication & Marketing", 
-            "image": "pfp.jpg"
-        },
-        {
             "name": "Hitesh S", 
             "role": "IT Head", 
             "image": "hitesh.jpg"
+        },
+        {
+            "name": "Ngawang T", 
+            "role": "Communication & Marketing", 
+            "image": "pfp.jpg"
         },
         {
             "name": "Ojashwi J", 
@@ -77,6 +80,17 @@ def team_view(request):
         {
             "name": "Grutso L", 
             "role": "Volunteer Manager", 
+            "image": "pfp.jpg"
+        },
+        
+        {
+            "name": "Omnika B", 
+            "role": "Outreach Director", 
+            "image": "pfp.jpg"
+        },
+        {
+            "name": "Srija A", 
+            "role": "Executive Member", 
             "image": "pfp.jpg"
         },
     ]

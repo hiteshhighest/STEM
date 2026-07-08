@@ -182,10 +182,6 @@
                 <div class="col-md-5">
                     <h3 class="fw-bold text-white mb-3">Have Queries?</h3>
                     <p style="color: #94a3b8; line-height: 1.6;">Whether you want to partner with us, ask about our upcoming educational programs, or run an initiative in your local school, drop us a line!</p>
-                    <div class="mt-4 pt-2 d-none d-md-block">
-                        <small class="d-block text-uppercase font-monospace tracking-wider text-primary mb-1" style="font-size: 0.75rem;">Direct Support Inbox</small>
-                        <a href="mailto:info@stemfornepal.org" class="text-white text-decoration-none fw-semibold">info@stemfornepal.org</a>
-                    </div>
                 </div>
                 <div class="col-md-7">
                     {% if messages %}
@@ -197,11 +193,11 @@
                     {% endif %}
                     
                     <form method="POST" action="{% url 'home' %}">
-                        {% csrf_with_token %}
+                        {% csrf_token %}
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label class="form-label small fw-medium text-white-50">Full Name</label>
-                                <input type="text" name="name" class="form-control form-control-dark p-2.5 rounded-3" placeholder="Hitesh Shah" required>
+                                <input type="text" name="name" class="form-control form-control-dark p-2.5 rounded-3" placeholder="Your Name" required>
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label small fw-medium text-white-50">Email Address</label>

@@ -33,6 +33,27 @@
     .card-divider-glow {
         border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
     }
+
+    /* Premium Image Container Layer & Zoom Mechanics */
+    .program-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        height: 200px;
+        background-color: #030712;
+    }
+
+    .program-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover .program-card-img {
+        transform: scale(1.05);
+    }
 </style>
 
 <!-- Centered Header Section -->
@@ -46,7 +67,22 @@
 <div class="row g-4">
     {% for program in programs %}
     <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-lg">
+        <div class="card h-100 shadow-lg border-0">
+            <!-- Top Program Aspect Feature Image Banner -->
+            <div class="program-img-wrapper">
+                {% if program.image %}
+                    <img src="{{ program.image }}" alt="{{ program.title }}" class="program-card-img">
+                {% else %}
+                    <!-- Modern Clean Technical CSS Backup State if image string block is missing -->
+                    <div class="d-flex align-items-center justify-content-center h-100 w-100 opacity-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#60a5fa" class="bi bi-code-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+                        </svg>
+                    </div>
+                {% endif %}
+            </div>
+
             <div class="card-body p-4 d-flex flex-column">
                 <!-- Program High-contrast Dynamic Tagline -->
                 <span class="program-tagline fw-bold text-uppercase mb-2.5 d-block">{{ program.tagline }}</span>
