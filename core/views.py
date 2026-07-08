@@ -82,10 +82,6 @@ def team_view(request):
             "role": "Volunteer Manager", 
             "image": "pfp.jpg"
         },
-<<<<<<< HEAD
-        
-=======
->>>>>>> 7fa45015bd80255e0db4abceb07f6a6ce633bf52
         {
             "name": "Omnika B", 
             "role": "Outreach Director", 
