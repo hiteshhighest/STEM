@@ -3,4 +3,4 @@ services:
     name: stemfornepal
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn projectname.wsgi:application"
+    startCommand: "gunicorn STEMforNepal.wsgi:application"

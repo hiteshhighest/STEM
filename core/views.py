@@ -88,6 +88,16 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
+            "name": "Zoey S", 
+            "role": "Content Creator", 
+            "image": "pfp.jpg"
+        },
+        {
+            "name": "Laxmi P", 
+            "role": "Executive Member", 
+            "image": "pfp.jpg"
+        },
+        {
             "name": "Srija A", 
             "role": "Executive Member", 
             "image": "pfp.jpg"
