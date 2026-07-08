@@ -63,16 +63,6 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
-            "name": "Hitesh S", 
-            "role": "IT Head", 
-            "image": "hitesh.jpg"
-        },
-        {
-            "name": "Ngawang T", 
-            "role": "Communication & Marketing", 
-            "image": "pfp.jpg"
-        },
-        {
             "name": "Ojashwi J", 
             "role": "Secretary", 
             "image": "pfp.jpg"
@@ -83,8 +73,18 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
+            "name": "Hitesh S", 
+            "role": "IT Head", 
+            "image": "hitesh.jpg"
+        },
+        {
             "name": "Omnika B", 
             "role": "Outreach Director", 
+            "image": "pfp.jpg"
+        },
+        {
+            "name": "Ngawang T", 
+            "role": "Communication & Marketing", 
             "image": "pfp.jpg"
         },
         {
