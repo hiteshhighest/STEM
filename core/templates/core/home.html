@@ -75,6 +75,30 @@
         border-color: rgba(59, 130, 246, 0.3);
         color: var(--accent-blue);
     }
+
+    /* Contact Card Integration UI Styles */
+    .contact-glass-card {
+        background: rgba(3, 7, 18, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+    }
+
+    .form-control-dark {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff !important;
+        transition: all 0.2s ease;
+    }
+
+    .form-control-dark:focus {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    }
+
+    .form-control-dark::placeholder {
+        color: #64748b;
+    }
 </style>
 
 <!-- Main Interactive Hero Layout -->
@@ -83,7 +107,7 @@
         <div class="col-lg-9">
             <span class="badge badge-premium-pill px-3 py-2 rounded-pill text-uppercase mb-3 shadow-sm fw-bold">Official Website</span>
             <h1 class="display-4 fw-bold mb-3 text-white" style="letter-spacing: -0.03em; line-height: 1.15;">Developing STEM <br class="d-none d-md-block">in Nepal</h1>
-            <p class="fs-5 mb-4 text-secondary-emphasis" style="max-width: 720px; color: #cbd5e1 !important;">We work together to develop STEM (Science, Technology, Engineering, Mathematics) in Nepal through community serivce, programs and various initiatives.</p>
+            <p class="fs-5 mb-4 text-secondary-emphasis" style="max-width: 720px; color: #cbd5e1 !important;">We work together to develop STEM (Science, Technology, Engineering, Mathematics) in Nepal through community service, programs and various initiatives.</p>
             <div class="pt-2">
                 <a href="{% url 'programs' %}" class="btn btn-hero-primary btn-lg px-4 me-md-3 rounded-pill mb-2 mb-md-0">Explore Programs</a>
                 <a href="{% url 'volunteer' %}" class="btn btn-hero-secondary btn-lg px-4 rounded-pill">Volunteer</a>
@@ -93,7 +117,7 @@
 </div>
 
 <!-- Symmetric STEM Pillars Matrix Grid -->
-<div class="row g-4 text-start">
+<div class="row g-4 text-start mb-5">
     
     <!-- Science -->
     <div class="col-lg-3 col-md-6">
@@ -113,7 +137,7 @@
         <div class="p-4 card h-100">
             <div class="icon-spot-glow text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
-                    <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1a.5.5 0 0 1 .5.5v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1a.5.5 0 0 1-.5.5h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1H2a.5.5 0 0 1-.5-.5v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2V2H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 0h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1zm1 3v9h9V4H5zm1 1h2v2H6V5zm3 0h2v2H9V5zm-3 3h2v2H6V8zm3 0h2v2H9V8z"/>
+                    <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1a.5.5 0 0 1 .5.5v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1a.5.5 0 0 1-.5.5h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1H2a.5.5 0 0 1-.5-.5v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2V2H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 0h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1zm1 3v9h9V4H5zm1 1h2v2H6V5zm3 0h2v2H9V5zm-3 3h2v2H6V8zm3 0h2v2H9V8z"/>
                 </svg>
             </div>
             <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">T</span>echnology</h4>
@@ -148,5 +172,53 @@
         </div>
     </div>
 
+</div>
+
+<!-- Contact & Queries Section -->
+<div class="row justify-content-center text-start">
+    <div class="col-lg-10">
+        <div class="p-4 p-md-5 rounded-4 contact-glass-card shadow">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-5">
+                    <h3 class="fw-bold text-white mb-3">Have Queries?</h3>
+                    <p style="color: #94a3b8; line-height: 1.6;">Whether you want to partner with us, ask about our upcoming educational programs, or run an initiative in your local school, drop us a line!</p>
+                    <div class="mt-4 pt-2 d-none d-md-block">
+                        <small class="d-block text-uppercase font-monospace tracking-wider text-primary mb-1" style="font-size: 0.75rem;">Direct Support Inbox</small>
+                        <a href="mailto:info@stemfornepal.org" class="text-white text-decoration-none fw-semibold">info@stemfornepal.org</a>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success bg-success-subtle border-success-subtle text-success small rounded-3 mb-3" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="POST" action="{% url 'home' %}">
+                        {% csrf_with_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label small fw-medium text-white-50">Full Name</label>
+                                <input type="text" name="name" class="form-control form-control-dark p-2.5 rounded-3" placeholder="Hitesh Shah" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label small fw-medium text-white-50">Email Address</label>
+                                <input type="email" name="email" class="form-control form-control-dark p-2.5 rounded-3" placeholder="name@example.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-medium text-white-50">Your Message</label>
+                                <textarea name="message" rows="4" class="form-control form-control-dark p-2.5 rounded-3" placeholder="How can we help you expand STEM education?" required></textarea>
+                            </div>
+                            <div class="col-12 pt-1">
+                                <button type="submit" class="btn btn-hero-primary w-100 py-2.5 rounded-3">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

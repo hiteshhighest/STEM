@@ -1,9 +1,35 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib import messages
 from .forms import VolunteerApplicationForm  # Ensure this matches your form definition name
 
 def home(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message_content = request.POST.get('message')
+        
+        # Build clean string email block
+        query_email = (
+            f"New General Query from STEM for Nepal Home Page:\n\n"
+            f"Sender Name: {name}\n"
+            f"Sender Email: {email}\n\n"
+            f"Message Context:\n{message_content}"
+        )
+        
+        # Dispatch notification email out to default internal recipient parameters
+        send_mail(
+            subject=f"General Query Sub: {name}",
+            message=query_email,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.RECIPIENT_ADDRESS],
+            fail_silently=False,
+        )
+        
+        messages.success(request, "Your query has been sent successfully! Our team will get back to you soon.")
+        return redirect('home')
+        
     return render(request, 'core/home.html')
 
 def programs_view(request):
@@ -34,7 +60,7 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
-            "name": "Ngwang T", 
+            "name": "Ngawang T", 
             "role": "Communication & Marketing", 
             "image": "pfp.jpg"
         },
