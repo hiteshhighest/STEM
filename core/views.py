@@ -140,11 +140,8 @@ def volunteer_view(request):
             applicant_message = (
                 f"Hi {full_name},\n\n"
                 f"Thank you for applying to join STEM for Nepal!\n\n"
-                f"Our leadership committee has successfully received your application details. "
-                f"We appreciate you sharing your skills and your motivation for joining our missions.\n\n"
-                f"We are working diligently to break socioeconomic barriers and scale experiential learning "
-                f"systems across our regional communities. A coordinator from our team will evaluate "
-                f"your profile and follow up with you at this address shortly.\n\n"
+                f"Our leadership committee has successfully received your application details. \n\n"
+                f"Your profile and follow up with you at this address shortly.\n\n"
                 f"Warm regards,\n"
                 f"The STEM for Nepal Core Committee"
             )
