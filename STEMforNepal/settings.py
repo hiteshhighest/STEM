@@ -1,113 +1,129 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# ==============================================================================
+# BASE DIRECTORY & ENVIRONMENT VARIABLES
+# ==============================================================================
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / ".env")
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# ==============================================================================
+# SECURITY
+# ==============================================================================
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ma)6ta#p66y+)%0uds3ba3q54)+=(r4ed+a)^(b0ds_6yik4=2'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
-# Application definition
+# ==============================================================================
+# APPLICATIONS
+# ==============================================================================
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'core',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+
     "whitenoise.runserver_nostatic",
+
+    "core",
 ]
+
+# ==============================================================================
+# MIDDLEWARE
+# ==============================================================================
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'STEMforNepal.urls'
+# ==============================================================================
+# URLS
+# ==============================================================================
+
+ROOT_URLCONF = "STEMforNepal.urls"
+
+WSGI_APPLICATION = "STEMforNepal.wsgi.application"
+
+# ==============================================================================
+# TEMPLATES
+# ==============================================================================
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'STEMforNepal.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
+# ==============================================================================
+# DATABASE
+# ==============================================================================
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
+# ==============================================================================
+# PASSWORD VALIDATION
+# ==============================================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
+# ==============================================================================
+# INTERNATIONALISATION
+# ==============================================================================
 
-# Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
+LANGUAGE_CODE = "en-us"
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
+# ==============================================================================
+# STATIC FILES
+# ==============================================================================
 
 STATIC_URL = "/static/"
 
@@ -118,17 +134,17 @@ STATICFILES_STORAGE = (
 )
 
 # ==============================================================================
-# EMAIL MANAGEMENT LAYER
+# RESEND CONFIGURATION
 # ==============================================================================
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'hiteshhighest122@gmail.com'
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+RESEND_API_KEY = 're_5VMroAxY_2tFoMHdUWX3Gb9y8Aonig5c3'
 
-DEFAULT_FROM_EMAIL = 'STEM for Nepal <hiteshhighest122@gmail.com>'
-RECIPIENT_ADDRESS = 'hiteshhighest122@gmail.com'
+DEFAULT_FROM_EMAIL = "STEM for Nepal <temp@resend.dev>"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+RECIPIENT_ADDRESS = "hiteshhighest122@gmail.com"
+
+# ==============================================================================
+# DEFAULT PRIMARY KEY
+# ==============================================================================
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

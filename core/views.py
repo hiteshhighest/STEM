@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from django.conf import settings
 from django.contrib import messages
-from .forms import VolunteerApplicationForm  # Ensure this matches your form definition name
+from .forms import VolunteerApplicationForm
+import resend
+from django.conf import settings
+
+resend.api_key = settings.RESEND_API_KEY
+from .forms import VolunteerApplicationForm
 
 def home(request):
     if request.method == 'POST':
@@ -18,14 +22,12 @@ def home(request):
             f"Message Context:\n{message_content}"
         )
         
-        # Dispatch notification email out to default internal recipient parameters
-        send_mail(
-            subject=f"General Query Sub: {name}",
-            message=query_email,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.RECIPIENT_ADDRESS],
-            fail_silently=False,
-        )
+        resend.Emails.send({
+            "from": "STEM for Nepal <temp@resend.dev>",
+            "to": ["hiteshhighest122@gmail.com"],
+            "subject": f"General Query Sub: {name}",
+            "text": query_email,
+        })
         
         messages.success(request, "Your query has been sent successfully! Our team will get back to you soon.")
         return redirect('home')
@@ -111,59 +113,74 @@ def team_view(request):
     return render(request, 'core/team.html', {'members': members})
 
 def volunteer_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = VolunteerApplicationForm(request.POST)
+
         if form.is_valid():
             data = form.cleaned_data
-            
-            # Extract updated field data directly from your text inputs
-            full_name = data.get('full_name')
-            email = data.get('email')
-            phone_number = data.get('phone_number')
-            skills = data.get('skills')
-            motivation = data.get('motivation')
-            
-            # Email 1: Detailed Internal Admin Monitoring Message Block
+
+            full_name = data.get("full_name")
+            email = data.get("email")
+            phone_number = data.get("phone_number")
+            skills = data.get("skills")
+            motivation = data.get("motivation")
+
+            # ==============================================================================
+            # EMAIL TO STEM FOR NEPAL
+            # ==============================================================================
+
             admin_message = (
-                f"New Volunteer Application Received:\n\n"
+                f"New Volunteer Application Received\n\n"
                 f"Name: {full_name}\n"
                 f"Email: {email}\n"
                 f"Phone Number: {phone_number}\n\n"
-                f"Skills & Expertise:\n{skills}\n\n"
-                f"Motivation / Statement of Purpose:\n{motivation}"
+                f"Skills & Expertise:\n"
+                f"{skills}\n\n"
+                f"Motivation / Statement of Purpose:\n"
+                f"{motivation}"
             )
-            
-            send_mail(
-                subject=f"Volunteer Form Sub: {full_name}",
-                message=admin_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.RECIPIENT_ADDRESS],
-                fail_silently=False,
-            )
-            
-            # Email 2: Professional Direct Receipt Copy Sent Back To Applicant Inbox
+
+            resend.Emails.send({
+                "from": settings.DEFAULT_FROM_EMAIL,
+                "to": [settings.RECIPIENT_ADDRESS],
+                "subject": f"Volunteer Form Submission: {full_name}",
+                "text": admin_message,
+            })
+
+            # ==============================================================================
+            # CONFIRMATION EMAIL TO APPLICANT
+            # ==============================================================================
+
             applicant_message = (
                 f"Hi {full_name},\n\n"
-                f"Thank you for applying to join STEM for Nepal!\n\n"
-                f"Our leadership committee has successfully received your application details. \n\n"
-                f"Your profile and follow up with you at this address shortly.\n\n"
-                f"Warm regards,\n"
-                f"The STEM for Nepal Core Committee"
+                f"Thank you for applying to volunteer with STEM for Nepal!\n\n"
+                f"We have successfully received your application.\n\n"
+                f"Our team will carefully review your submission and "
+                f"contact you as soon as possible.\n\n"
+                f"We truly appreciate your interest in supporting STEM education "
+                f"across Nepal.\n\n"
+                f"Best regards,\n\n"
+                f"STEM for Nepal"
             )
-            
-            send_mail(
-                subject="We received your application! — STEM for Nepal",
-                message=applicant_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[email],
-                fail_silently=False,
+
+            resend.Emails.send({
+                "from": settings.DEFAULT_FROM_EMAIL,
+                "to": [email],
+                "subject": "We've received your volunteer application!",
+                "text": applicant_message,
+            })
+
+            messages.success(
+                request,
+                "Your volunteer application has been submitted successfully!"
             )
-            
-            return redirect('volunteer_success')
+
+            return redirect("volunteer_success")
+
     else:
         form = VolunteerApplicationForm()
-        
-    return render(request, 'core/volunteer.html', {'form': form})
+
+    return render(request, "core/volunteer.html", {"form": form})
 
 def volunteer_success(request):
     return render(request, 'core/success.html')
