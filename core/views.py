@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
-from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import VolunteerApplicationForm
 import resend
 from django.conf import settings
 
 resend.api_key = settings.RESEND_API_KEY
-from .forms import VolunteerApplicationForm
 
 def home(request):
     if request.method == 'POST':
@@ -34,7 +32,6 @@ def home(request):
         
     return render(request, 'core/home.html')
 
-from django.shortcuts import render
 
 def programs_view(request):
     programs = [
