@@ -102,6 +102,11 @@ def team_view(request):
             "role": "Executive Member", 
             "image": "pfp.jpg"
         },
+        {
+            "name": "Parin B", 
+            "role": "Executive Member", 
+            "image": "pfp.jpg"
+        },
     ]
     return render(request, 'core/team.html', {'members': members})
 
