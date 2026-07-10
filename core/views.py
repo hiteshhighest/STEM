@@ -54,7 +54,7 @@ def team_view(request):
         {
             "name": "Ritima G", 
             "role": "VP External", 
-            "image": "pfp.jpg"
+            "image": "ritima.png"
         },
         {
             "name": "Yogesh D", 
