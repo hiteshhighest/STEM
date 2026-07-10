@@ -19,7 +19,7 @@ def home(request):
             f"Sender Email: {email}\n\n"
             f"Message Context:\n{message_content}"
         )
-        
+                
         resend.Emails.send({
             "from": "STEM for Nepal <temp@resend.dev>",
             "to": ["hiteshhighest122@gmail.com"],
