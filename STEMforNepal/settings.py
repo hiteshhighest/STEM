@@ -141,7 +141,7 @@ RESEND_API_KEY = 're_5VMroAxY_2tFoMHdUWX3Gb9y8Aonig5c3'
 
 DEFAULT_FROM_EMAIL = "STEM for Nepal <temp@resend.dev>"
 
-RECIPIENT_ADDRESS = "hiteshhighest122@gmail.com"
+RECIPIENT_ADDRESS = "stemfornepal@gmail.com"
 
 # ==============================================================================
 # DEFAULT PRIMARY KEY

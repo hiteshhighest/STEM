@@ -22,7 +22,7 @@ def home(request):
                 
         resend.Emails.send({
             "from": "STEM for Nepal <temp@resend.dev>",
-            "to": ["hiteshhighest122@gmail.com"],
+            "to": ["stemfornepal@gmail.com"],
             "subject": f"General Query Sub: {name}",
             "text": query_email,
         })
