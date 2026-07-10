@@ -137,9 +137,9 @@ STATICFILES_STORAGE = (
 # RESEND CONFIGURATION
 # ==============================================================================
 
-RESEND_API_KEY = 're_5VMroAxY_2tFoMHdUWX3Gb9y8Aonig5c3'
+RESEND_API_KEY = 're_GMiAw1pd_DoqsKgvDgzdHdCnynHTg8avy'
 
-DEFAULT_FROM_EMAIL = "STEM for Nepal <temp@resend.dev>"
+DEFAULT_FROM_EMAIL = "STEM for Nepal <STEMforNepal@resend.dev>"
 
 RECIPIENT_ADDRESS = "stemfornepal@gmail.com"
 
