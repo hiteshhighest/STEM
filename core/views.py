@@ -32,7 +32,6 @@ def home(request):
         
     return render(request, 'core/home.html')
 
-
 def programs_view(request):
     programs = [
         {
@@ -84,7 +83,7 @@ def team_view(request):
         {
             "name": "Ngawang T", 
             "role": "Communication & Marketing", 
-            "image": "pfp.jpg"
+            "image": "ngawang.jpg"
         },
         {
             "name": "Zoey S", 
