@@ -1,220 +1,56 @@
 {% extends 'core/base.html' %}
-{% block content %}
-<title>STEMforNepal | Home</title>
+{% block title %}STEMforNepal | Home{% endblock %}
+{% block extra_head %}
 <style>
-    /* Premium Interactive Hero Block Layout */
-    .hero-glass-banner {
-        background: linear-gradient(135deg, #09132e 0%, #030712 100%);
-        border: 1px solid rgba(59, 130, 246, 0.15);
-        position: relative;
-    }
-    
-    .hero-glass-banner::after {
-        content: '';
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        background-color: var(--accent-blue);
-        filter: blur(120px);
-        top: 10%;
-        right: 10%;
-        opacity: 0.15;
-        pointer-events: none;
-    }
-
-    .badge-premium-pill {
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.25);
-        color: #60a5fa;
-        letter-spacing: 0.05em;
-    }
-
-    .btn-hero-primary {
-        background-color: var(--accent-blue);
-        color: #ffffff;
-        font-weight: 600;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-    }
-    .btn-hero-primary:hover {
-        background-color: #2563eb;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-        color: #ffffff;
-    }
-
-    .btn-hero-secondary {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-        font-weight: 500;
-        transition: all 0.2s ease;
-    }
-    .btn-hero-secondary:hover {
-        background-color: rgba(255, 255, 255, 0.03);
-        border-color: rgba(255, 255, 255, 0.25);
-        transform: translateY(-2px);
-        color: #ffffff;
-    }
-
-    /* Modern Icon Spot Layout inside Features */
-    .icon-spot-glow {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.25rem;
-        transition: all 0.3s ease;
-    }
-    
-    .card:hover .icon-spot-glow {
-        background: rgba(59, 130, 246, 0.1);
-        border-color: rgba(59, 130, 246, 0.3);
-        color: var(--accent-blue);
-    }
-
-    /* Contact Card Integration UI Styles */
-    .contact-glass-card {
-        background: rgba(3, 7, 18, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(16px);
-    }
-
-    .form-control-dark {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #ffffff !important;
-        transition: all 0.2s ease;
-    }
-
-    .form-control-dark:focus {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: var(--accent-blue);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
-    }
-
-    .form-control-dark::placeholder {
-        color: #64748b;
-    }
+.hero{position:relative;overflow:hidden;border-radius:32px;min-height:600px;padding:clamp(2.5rem,7vw,5.5rem) clamp(1.5rem,6vw,5rem);background:linear-gradient(180deg,#1f2352 0%,#4a4a8a 45%,#c48fa0 75%,#f6c9a8 100%)}
+.hero h1{color:#fff;font-size:clamp(2.8rem,7vw,5.4rem);font-weight:300;max-width:12ch}
+.hero p{color:rgba(255,255,255,.82);font-size:1.15rem;margin:1.4rem 0 2rem}
+.hero-copy{position:relative;z-index:2}
+.hero svg{position:absolute;left:0;bottom:0;width:100%;height:58%;display:block}
+.tile{border-radius:24px;padding:1.75rem;height:100%;background:var(--bg)}
+.tile .big{font:300 4rem/1 'Fraunces',serif;color:var(--c)}
+.tile h3{font-size:1.4rem;margin:1rem 0 .4rem}
+.tile p{font-size:.95rem;margin:0}
+.contact h2{font-size:clamp(2rem,4vw,2.8rem)}
 </style>
+{% endblock %}
+{% block content %}
+<section class="hero mb-5">
+  <div class="hero-copy">
+    <h1>Science for every classroom in Nepal</h1>
+    <p>We build STEM education through community service, school programs and student-led initiatives.</p>
+    <a href="{% url 'programs' %}" class="btn-pill me-2 mb-2">See our programs</a>
+    <a href="{% url 'volunteer' %}" class="btn-ghost mb-2">Volunteer</a>
+  </div>
+  <svg viewBox="0 0 1200 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><radialGradient id="g"><stop offset="0" stop-color="#fff4e6"/><stop offset=".35" stop-color="#f9d3b4"/><stop offset="1" stop-color="#f9d3b4" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="880" cy="190" r="170" fill="url(#g)"/>
+    <path d="M0 340V200l100-50 90 60 130-110 120 100 110-70 140 120 100-90 120 60 110-100 110 90 70-40v270z" fill="#8a7fb0" opacity=".75"/>
+    <path d="M0 340V250l140-70 110 70 150-90 130 100 120-60 150 90 120-70 140 60 140-40v130z" fill="#514c8c"/>
+    <path d="M0 340V290l160-50 180 45 200-40 220 50 230-40 210 30v55z" fill="#2b2f63"/>
+  </svg>
+</section>
 
-<!-- Main Interactive Hero Layout -->
-<div class="hero-glass-banner p-5 rounded-4 shadow mb-5 text-center text-md-start">
-    <div class="row py-4 align-items-center">
-        <div class="col-lg-9">
-            <span class="badge badge-premium-pill px-3 py-2 rounded-pill text-uppercase mb-3 shadow-sm fw-bold">Official Website</span>
-            <h1 class="display-4 fw-bold mb-3 text-white" style="letter-spacing: -0.03em; line-height: 1.15;">Developing STEM <br class="d-none d-md-block">in Nepal</h1>
-            <p class="fs-5 mb-4 text-secondary-emphasis" style="max-width: 720px; color: #cbd5e1 !important;">We work together to develop STEM (Science, Technology, Engineering, Mathematics) in Nepal through community service, programs and various initiatives.</p>
-            <div class="pt-2">
-                <a href="{% url 'programs' %}" class="btn btn-hero-primary btn-lg px-4 me-md-3 rounded-pill mb-2 mb-md-0">Explore Programs</a>
-                <a href="{% url 'volunteer' %}" class="btn btn-hero-secondary btn-lg px-4 rounded-pill">Volunteer</a>
-            </div>
-        </div>
+<section class="row g-4 my-5 py-3">
+  <div class="col-md-6 col-lg-3"><div class="tile" style="--bg:var(--s-bg);--c:var(--s)"><div class="big">S</div><h3>Science</h3><p>Hands-on experiments that turn textbook ideas into curiosity.</p></div></div>
+  <div class="col-md-6 col-lg-3"><div class="tile" style="--bg:var(--t-bg);--c:var(--t)"><div class="big">T</div><h3>Technology</h3><p>Computing, programming and digital skills for students without access.</p></div></div>
+  <div class="col-md-6 col-lg-3"><div class="tile" style="--bg:var(--e-bg);--c:var(--e)"><div class="big">E</div><h3>Engineering</h3><p>Robotics and building projects that teach problem-solving.</p></div></div>
+  <div class="col-md-6 col-lg-3"><div class="tile" style="--bg:var(--m-bg);--c:var(--m)"><div class="big">M</div><h3>Mathematics</h3><p>Abstract and spatial reasoning beyond rote calculation.</p></div></div>
+</section>
+
+<section class="soft contact p-4 p-md-5">
+  <div class="row g-5">
+    <div class="col-md-5"><h2 class="mb-3">Get in touch</h2>
+      <p>Want to partner with us, ask about a program, or bring an initiative to your school? Write to us and we'll reply by email.</p></div>
+    <div class="col-md-7">
+      {% for message in messages %}<div class="alert alert-success small rounded-4" role="alert">{{ message }}</div>{% endfor %}
+      <form method="POST" action="{% url 'home' %}" class="row g-3">{% csrf_token %}
+        <div class="col-sm-6"><label class="lbl" for="n">Full name</label><input id="n" class="inp" name="name" required></div>
+        <div class="col-sm-6"><label class="lbl" for="e">Email</label><input id="e" type="email" class="inp" name="email" required></div>
+        <div class="col-12"><label class="lbl" for="m">Message</label><textarea id="m" rows="4" class="inp" name="message" required></textarea></div>
+        <div class="col-12"><button class="btn-pill btn-dark" type="submit">Send message</button></div>
+      </form>
     </div>
-</div>
-
-<!-- Symmetric STEM Pillars Matrix Grid -->
-<div class="row g-4 text-start mb-5">
-    
-    <!-- Science -->
-    <div class="col-lg-3 col-md-6">
-        <div class="p-4 card h-100">
-            <div class="icon-spot-glow text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moisture" viewBox="0 0 16 16">
-                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0M3 5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m0 1a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7m11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 9.5a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0M3 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m0 1a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7"/>
-                </svg>
-            </div>
-            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">S</span>cience</h4>
-            <p class="small mb-0" style="color: #94a3b8;">Transforming theoretical concepts into interactive, hands-on experimentation and curiosity-driven discovery.</p>
-        </div>
-    </div>
-
-    <!-- Technology -->
-    <div class="col-lg-3 col-md-6">
-        <div class="p-4 card h-100">
-            <div class="icon-spot-glow text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
-                    <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1a.5.5 0 0 1 .5.5v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1a.5.5 0 0 1-.5.5h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1h-1v1a.5.5 0 0 1-1 0v-1H2a.5.5 0 0 1-.5-.5v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2V2H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 0h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1h1v1.5a.5.5 0 0 1 1 0V1zm1 3v9h9V4H5zm1 1h2v2H6V5zm3 0h2v2H9V5zm-3 3h2v2H6V8zm3 0h2v2H9V8z"/>
-                </svg>
-            </div>
-            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">T</span>echnology</h4>
-            <p class="small mb-0" style="color: #94a3b8;">Bridging the digital divide by introducing computing, programming logic, and digital literacy frameworks.</p>
-        </div>
-    </div>
-
-    <!-- Engineering -->
-    <div class="col-lg-3 col-md-6">
-        <div class="p-4 card h-100">
-            <div class="icon-spot-glow text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cone-striped" viewBox="0 0 16 16">
-                    <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.983C9.122 3.965 8.581 4 8 4s-1.122-.035-1.725-.103L6.575 1h2.85zM11.5 10c0 .633-.163 1.224-.462 1.777l-.82-3.281c.713-.129 1.282-.325 1.282-.496zM4 9.5c0 .171.57.367 1.282.496l-.82 3.281A3.2 3.2 0 0 1 4 11.5zm.374 3.497.742 2.971C5.747 15.986 6.845 16 8 16s2.253-.014 2.884-.032l.742-2.971C10.635 11.936 9.399 12 8 12s-2.635-.064-3.626-.003z"/>
-                </svg>
-            </div>
-            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">E</span>ngineering</h4>
-            <p class="small mb-0" style="color: #94a3b8;">Fostering problem-solving mindsets through practical infrastructure builds, robotics, and design models.</p>
-        </div>
-    </div>
-
-    <!-- Mathematics -->
-    <div class="col-lg-3 col-md-6">
-        <div class="p-4 card h-100">
-            <div class="icon-spot-glow text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
-                    <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m-6 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m-6 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
-                </svg>
-            </div>
-            <h4 class="fw-bold mb-2 text-white h5"><span class="text-primary">M</span>athematics</h4>
-            <p class="small mb-0" style="color: #94a3b8;">Moving beyond rote algorithmic calculation to develop structural abstraction and spatial reasoning.</p>
-        </div>
-    </div>
-
-</div>
-
-<!-- Contact & Queries Section -->
-<div class="row justify-content-center text-start">
-    <div class="col-lg-10">
-        <div class="p-4 p-md-5 rounded-4 contact-glass-card shadow">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-5">
-                    <h3 class="fw-bold text-white mb-3">Have Queries?</h3>
-                    <p style="color: #94a3b8; line-height: 1.6;">Whether you want to partner with us, ask about our upcoming educational programs, or run an initiative in your local school, drop us a line!</p>
-                </div>
-                <div class="col-md-7">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-success bg-success-subtle border-success-subtle text-success small rounded-3 mb-3" role="alert">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    
-                    <form method="POST" action="{% url 'home' %}">
-                        {% csrf_token %}
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label class="form-label small fw-medium text-white-50">Full Name</label>
-                                <input type="text" name="name" class="form-control form-control-dark p-2.5 rounded-3" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label small fw-medium text-white-50">Email Address</label>
-                                <input type="email" name="email" class="form-control form-control-dark p-2.5 rounded-3" placeholder="name@example.com" required>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label small fw-medium text-white-50">Your Message</label>
-                                <textarea name="message" rows="4" class="form-control form-control-dark p-2.5 rounded-3" placeholder="How can we help you expand STEM education?" required></textarea>
-                            </div>
-                            <div class="col-12 pt-1">
-                                <button type="submit" class="btn btn-hero-primary w-100 py-2.5 rounded-3">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  </div>
+</section>
 {% endblock %}
