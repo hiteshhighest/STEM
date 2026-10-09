@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://stemfornepal.org/sitemap.xml
+Sitemap: https://www.stemfornepal.org/sitemap.xml
