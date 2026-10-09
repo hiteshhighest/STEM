@@ -139,7 +139,7 @@ STATICFILES_STORAGE = (
 
 RESEND_API_KEY = os.environ.get("RESEND_API_KEY", "")
 
-DEFAULT_FROM_EMAIL = "STEM for Nepal <stemfornepal@gmail.com>"
+DEFAULT_FROM_EMAIL = "STEM for Nepal <volunteer@stemfornepal.org>"
 
 RECIPIENT_ADDRESS = "stemfornepal@gmail.com"
 
