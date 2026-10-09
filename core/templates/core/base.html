@@ -4,7 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}STEMforNepal{% endblock %}</title>
+<title>{% block title %}STEMforNepal | STEM Education and Opportunities in Nepal{% endblock %}</title>
+<meta name="description" content="{% block meta_description %}STEMforNepal empowers students in Nepal through science, technology, engineering and mathematics education, programmes, and opportunities to learn, innovate and collaborate.{% endblock %}">
+<link rel="canonical" href="https://stemfornepal.org{{ request.path }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STEMforNepal">
+<meta property="og:title" content="{% block og_title %}STEMforNepal | STEM Education and Opportunities in Nepal{% endblock %}">
+<meta property="og:description" content="{% block og_description %}STEMforNepal empowers students in Nepal through science, technology, engineering and mathematics education, programmes, and opportunities to learn, innovate and collaborate.{% endblock %}">
+<meta property="og:url" content="https://stemfornepal.org{{ request.path }}">
+<meta property="og:image" content="https://stemfornepal.org/static/logo.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{% block twitter_title %}STEMforNepal | STEM Education and Opportunities in Nepal{% endblock %}">
+<meta name="twitter:description" content="{% block twitter_description %}Discover STEMforNepal's programmes and opportunities in science, technology, engineering and mathematics.{% endblock %}">
+<meta name="twitter:image" content="https://stemfornepal.org/static/logo.png">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7074584968702743"
      crossorigin="anonymous"></script>
 <link rel="icon" href="{% static 'logo.png' %}">
@@ -60,6 +74,17 @@ a{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 {% block extra_head %}{% endblock %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "STEMforNepal",
+  "url": "https://stemfornepal.org/",
+  "logo": "https://stemfornepal.org/static/logo.png",
+  "description": "STEMforNepal empowers students in Nepal through science, technology, engineering and mathematics education, programmes, and opportunities to learn, innovate and collaborate."
+}
+</script>
 </head>
 <body>
 {% with page=request.resolver_match.url_name %}
