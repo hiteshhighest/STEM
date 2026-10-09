@@ -11,7 +11,7 @@ def robots_txt(request):
     content = """User-agent: *
 Allow: /
 
-Sitemap: https://stemfornepal.org/sitemap.xml
+Sitemap: https://www.stemfornepal.org/sitemap.xml
 """
     return HttpResponse(content, content_type="text/plain")
 
