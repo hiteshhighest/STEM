@@ -2,14 +2,48 @@
 {% block title %}STEMforNepal | Volunteer{% endblock %}
 {% block content %}
 <div class="row g-5">
-  <div class="col-lg-5"><div class="page-head pb-0"><h1>Volunteer with us</h1>
-    <p>Tell us a little about yourself and where you'd like to help. Applications go straight to our team's inbox.</p></div></div>
-  <div class="col-lg-7"><div class="soft p-4 p-md-5">
-    <form method="POST" class="row g-4 field" novalidate>{% csrf_token %}
-      {% for field in form %}<div class="col-12"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}
-        {% if field.errors %}<div class="small mt-1" style="color:var(--e)" role="alert">{{ field.errors|striptags }}</div>{% endif %}</div>{% endfor %}
-      <div class="col-12"><button class="btn-pill btn-dark" type="submit">Submit application</button></div>
-    </form>
-  </div></div>
+  <div class="col-lg-5">
+    <div class="page-head pb-0">
+      <h1>Volunteer with us</h1>
+      <p>Tell us a little about yourself and where you'd like to help. Applications go straight to our team's inbox.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="soft p-4 p-md-5">
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success mb-4" role="status">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST" class="row g-4 field" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+          <div class="col-12">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+
+            {% if field.errors %}
+              <div class="small mt-1" style="color:var(--e)" role="alert">
+                {{ field.errors|striptags }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <div class="col-12">
+          <button class="btn-pill btn-dark" type="submit">
+            Submit application
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>
 {% endblock %}

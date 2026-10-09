@@ -21,7 +21,7 @@ def home(request):
         )
                 
         resend.Emails.send({
-            "from": "STEM for Nepal <STEMforNepal@resend.dev>",
+            "from": "STEM for Nepal <volunteer@stemfornepal.org>",
             "to": ["stemfornepal@gmail.com"],
             "subject": f"General Query Sub: {name}",
             "text": query_email,
@@ -121,19 +121,14 @@ def volunteer_view(request):
             skills = data.get("skills")
             motivation = data.get("motivation")
 
-            # ==============================================================================
-            # EMAIL TO STEM FOR NEPAL
-            # ==============================================================================
-
+            # Email notification to STEM for Nepal
             admin_message = (
                 f"New Volunteer Application Received\n\n"
                 f"Name: {full_name}\n"
                 f"Email: {email}\n"
                 f"Phone Number: {phone_number}\n\n"
-                f"Skills & Expertise:\n"
-                f"{skills}\n\n"
-                f"Motivation / Statement of Purpose:\n"
-                f"{motivation}"
+                f"Skills & Expertise:\n{skills}\n\n"
+                f"Motivation / Statement of Purpose:\n{motivation}"
             )
 
             resend.Emails.send({
@@ -143,18 +138,15 @@ def volunteer_view(request):
                 "text": admin_message,
             })
 
-            # ==============================================================================
-            # CONFIRMATION EMAIL TO APPLICANT
-            # ==============================================================================
-
+            # Confirmation email to the applicant
             applicant_message = (
                 f"Hi {full_name},\n\n"
                 f"Thank you for applying to volunteer with STEM for Nepal!\n\n"
                 f"We have successfully received your application.\n\n"
                 f"Our team will carefully review your submission and "
                 f"contact you as soon as possible.\n\n"
-                f"We truly appreciate your interest in supporting STEM education "
-                f"across Nepal.\n\n"
+                f"We truly appreciate your interest in supporting STEM "
+                f"education across Nepal.\n\n"
                 f"Best regards,\n\n"
                 f"STEM for Nepal"
             )
@@ -171,12 +163,9 @@ def volunteer_view(request):
                 "Your volunteer application has been submitted successfully!"
             )
 
-            return redirect("volunteer_success")
+            return redirect("volunteer")
 
     else:
         form = VolunteerApplicationForm()
 
     return render(request, "core/volunteer.html", {"form": form})
-
-def volunteer_success(request):
-    return render(request, 'core/success.html')
