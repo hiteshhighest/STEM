@@ -1,10 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import VolunteerApplicationForm
+from django.http import HttpResponse
 import resend
 from django.conf import settings
 
 resend.api_key = settings.RESEND_API_KEY
+
+def robots_txt(request):
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://stemfornepal.org/sitemap.xml
+"""
+    return HttpResponse(content, content_type="text/plain")
 
 def home(request):
     if request.method == 'POST':
