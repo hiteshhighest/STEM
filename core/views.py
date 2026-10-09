@@ -56,29 +56,14 @@ def team_view(request):
             "image": "ritima.png"
         },
         {
-            "name": "Yogesh D", 
-            "role": "VP Internal", 
-            "image": "pfp.jpg"
-        },
-        {
             "name": "Ojashwi J", 
             "role": "Secretary", 
-            "image": "pfp.jpg"
-        },
-        {
-            "name": "Grutso L", 
-            "role": "Volunteer Manager", 
             "image": "pfp.jpg"
         },
         {
             "name": "Hitesh S", 
             "role": "IT Head", 
             "image": "hitesh.jpg"
-        },
-        {
-            "name": "Omnika B", 
-            "role": "Outreach Director", 
-            "image": "pfp.jpg"
         },
         {
             "name": "Ngawang T", 
@@ -91,7 +76,17 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
+            "name": "Alisha S", 
+            "role": "Graphic Designer", 
+            "image": "pfp.jpg"
+        },
+        {
             "name": "Laxmi P", 
+            "role": "Executive Member", 
+            "image": "pfp.jpg"
+        },
+        {
+            "name": "Sambridhi S", 
             "role": "Executive Member", 
             "image": "pfp.jpg"
         },
