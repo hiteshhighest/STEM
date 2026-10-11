@@ -85,7 +85,7 @@ def team_view(request):
             "image": "pfp.jpg"
         },
         {
-            "name": "Alisha S", 
+            "name": "Alisha B", 
             "role": "Graphic Designer", 
             "image": "pfp.jpg"
         },
