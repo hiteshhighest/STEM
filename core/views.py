@@ -16,30 +16,33 @@ Sitemap: https://www.stemfornepal.org/sitemap.xml
     return HttpResponse(content, content_type="text/plain")
 
 def home(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message_content = request.POST.get('message')
+    return redirect("https://www.instagram.com/stemfornepal/")
+
+# def home(request):
+#     if request.method == 'POST':
+#         name = request.POST.get('name')
+#         email = request.POST.get('email')
+#         message_content = request.POST.get('message')
         
-        # Build clean string email block
-        query_email = (
-            f"New General Query from STEM for Nepal Home Page:\n\n"
-            f"Sender Name: {name}\n"
-            f"Sender Email: {email}\n\n"
-            f"Message Context:\n{message_content}"
-        )
+#         # Build clean string email block
+#         query_email = (
+#             f"New General Query from STEM for Nepal Home Page:\n\n"
+#             f"Sender Name: {name}\n"
+#             f"Sender Email: {email}\n\n"
+#             f"Message Context:\n{message_content}"
+#         )
                 
-        resend.Emails.send({
-            "from": "STEM for Nepal <volunteer@stemfornepal.org>",
-            "to": ["stemfornepal@gmail.com"],
-            "subject": f"General Query Sub: {name}",
-            "text": query_email,
-        })
+#         resend.Emails.send({
+#             "from": "STEM for Nepal <volunteer@stemfornepal.org>",
+#             "to": ["stemfornepal@gmail.com"],
+#             "subject": f"General Query Sub: {name}",
+#             "text": query_email,
+#         })
         
-        messages.success(request, "Your query has been sent successfully! Our team will get back to you soon.")
-        return redirect('home')
+#         messages.success(request, "Your query has been sent successfully! Our team will get back to you soon.")
+#         return redirect('home')
         
-    return render(request, 'core/home.html')
+#     return render(request, 'core/home.html')
 
 def programs_view(request):
     programs = [
